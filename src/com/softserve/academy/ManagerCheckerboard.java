@@ -10,21 +10,23 @@
 package com.softserve.academy;
 
 public class ManagerCheckerboard {
-    private final static String informHeight = "Enter a checkerboard height value";
-    private final static String informLength = "Enter a checkerboard length value";
+    private final static String informHeight = "Enter checkerboard height value";
+    private final static String informLength = "Enter checkerboard length value";
+    private final static String informNoPositive = "You entered negative arguments or zero. " +
+            "Please, enter only positive numbers";
 
     public static void main(String[] args) {
         ConsoleIO.printToConsole(informHeight);
-        String height = ConsoleIO.enterAttribute();
+        int height = ConsoleIO.enterAttribute(); // method scans value and transforms it into an integer;
         ConsoleIO.printToConsole(informLength);
-        String length = ConsoleIO.enterAttribute();
-        if (ValidAttribute.checkAttribute(height, length)) {
-                Checkerboard board = new Checkerboard(ValidAttribute.boardHeight,
-                                                      ValidAttribute.boardLength);
-                String output = board.drawCheckerboard();
+        int length = ConsoleIO.enterAttribute();
+        // if height and length positive numbers, checkerboard creates with these attributes
+        if ((height > 0) && (length > 0)) {
+                Checkerboard board = new Checkerboard(height, length);
+                String output = board.drawCheckerboard(); // checkerboard draws
                 ConsoleIO.printToConsole(output);
         } else {
-            System.out.println("try again");
+            ConsoleIO.printToConsole(informNoPositive);
         }
         ConsoleIO.closeScanner();
     }

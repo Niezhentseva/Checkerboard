@@ -8,6 +8,7 @@ public class Checkerboard {
     private final static String BLACK_PAINT = "*";
     private final static String NEW_LINE = "\n";
 
+
     public Checkerboard(int boardHeight, int boardLength) {
         this.boardHeight = boardHeight;
         this.boardLength = boardLength;
